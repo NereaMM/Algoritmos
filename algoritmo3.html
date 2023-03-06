@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmo 3</title>
+
+    <script>
+        function leerHorasTrabajadas() {
+            let h = prompt('Introducza su total de horas trabajadas: ');
+            while (h == null || /\D/.test(h) || h == "") {
+                h = prompt('Introducza su total de horas trabajadas: ');
+            };
+
+            return h;
+        }
+
+        function leerTarifa() {
+            let t = prompt('Introducza su tarifa por hora: ');
+            while (t == null || /\D/.test(t) || t == "") {
+                t = prompt('Introducza su tarifa por hora: ');
+            };
+
+            return t;
+        }
+
+        //Recoger horas trabajadas y tarifa.
+        let horasTrabajadas = leerHorasTrabajadas();
+        let tarifa = leerTarifa();
+        let sueldo = 0;
+
+        //Si las horas son 40 o menos, la tarifa es el valor introducido, si no se incrementa en un 50% para las horas extra.
+        if (horasTrabajadas <= 40) {
+            sueldo = horasTrabajadas * tarifa;
+        } else {
+            let tarifaExtra = 1.50 * tarifa;
+            let horasExtra = horasTrabajadas - 40;
+            sueldo = horasExtra * tarifaExtra + 40 * tarifa;
+        }
+
+        console.log('Ha trabajado un total de ' + horasTrabajadas + ' horas');
+        console.log('Su tarifa es de ' + tarifa + '€ por hora');
+        console.log('Su sueldo es de: ' + sueldo + '€.');
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

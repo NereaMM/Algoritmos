@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmo 2</title>
+
+    <script>
+        function leerPersonas() {
+            let sexoArray = ['Masculino', 'Femenino'];
+            let personas = [];
+
+            //Rellenar array con 50 personas
+            for (let i = 0; i < 50; i++) {
+                let nuevaPersona = {
+                    sexo: sexoArray[Math.floor(Math.random() * sexoArray.length)],
+                    edad: Math.floor(Math.random() * (100 - 1) + 1)
+                };
+                personas.push(nuevaPersona);
+            }
+            //Recorrer array para mostrar clasificación
+            let personasMayores = 0;
+            let personasMenores = 0;
+            let personasMayoresMasculinas = 0;
+            let personasMenoresFemeninas = 0;
+            let porcentajeMayores = 0;
+            let porcentajeMujeres = 0;
+            let totalMujeres = 0;
+
+            for (let i = 0; i < personas.length; i++) {
+                //Comprobación mayores/menores
+                personas[i].edad >= 18 ? personasMayores++ : personasMenores++;
+
+                //Comprobación si son hombres con 18 o más, si no son hombres comprobación si tienen menos de 18.
+                if (personas[i].sexo == 'Masculino') {
+                    if (personas[i].edad >= 18)
+                        personasMayoresMasculinas++
+                } else {
+                    totalMujeres++;
+                    if (personas[i].edad < 18) {
+                        personasMenoresFemeninas++;
+                    }
+                }
+
+                //% personas mayores de edad respecto al total de personas
+                porcentajeMayores = ((personasMayores / 50) * 100);
+
+                //% personas mujeres respecto al total de personas
+                porcentajeMujeres = Math.floor((totalMujeres / 50) * 100);
+            }
+
+            //Resultados
+            console.log('Total mayor 18: ' + personasMayores);
+            console.log('Total menor 18: ' + personasMenores);
+            console.log('Hombres mayor 18: ' + personasMayoresMasculinas);
+            console.log('Mujeres menor 18: ' + personasMenoresFemeninas);
+            console.log('Porcentaje de personas mayores 18: ' + porcentajeMayores);
+            console.log('Porcentaje mujeres: ' + porcentajeMujeres);
+
+        }
+
+        leerPersonas();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
